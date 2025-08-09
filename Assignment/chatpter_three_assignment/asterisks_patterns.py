@@ -20,6 +20,19 @@ while count > 0 :
 	print()
 
 
+count = 0
+while count < 11 :
+	star = 0
+	while(star < count) :                                                 
+		print(" ", end = "")
+		star  += 1
+	space = 11
+	while space > count:
+		print("*",end='')
+		space  -= 1
+	count  +=  1
+	print()
+
 
 space = 11
 count = 1
@@ -38,18 +51,20 @@ while count < 11 :
 
 
 
-
-space = 11
-count = 1
+count = 0
 while count < 11 :
-	space = 11
-	while(space > count) :                                                 
-		print(" ", end='' )
-		space -= 1
 	star = 0
-	while star < count :
-		print("*", end = ' ')
+	while(star < count) :                                                 
+		print(" ", end = "")
 		star  += 1
+	space = 11
+	while space > count:
+		print("*",end='')
+		space  -= 1
 	count  +=  1
-	
 	print()
+	tab = 0
+while tab < 10:
+	print('r',end=' ')
+	tab += 1
+
