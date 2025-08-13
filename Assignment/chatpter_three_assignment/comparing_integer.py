@@ -1,4 +1,4 @@
-print("Enter two integers, and i will twll you,", "the relationships they satisfy. ")
+print("Enter two integers, and i will tell you,", "the relationships they satisfy. ")
 
 numberOne = int(input("Enter first integer:  "))
 numberTwo = int(input("Enter second integer:  "))
