@@ -12,10 +12,10 @@ print(list(map(square_of_a_list, numbers)))
 def length_of_a_list(number) :
 	if number == [0,0,0,0,0] :
 		raise ValueError
+	return len(number)
 
-	return number
-word = ["apple", "car"]
-print(list(map(len,word)))
+word = ["apple", "car", "Makaveli", "Ikkaveli"]
+print(list(map( length_of_a_list, word)))
 
 
 def even_number(number) :
