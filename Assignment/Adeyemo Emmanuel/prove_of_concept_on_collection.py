@@ -82,12 +82,86 @@ def sum_inner(my_list) :
 
 
 
+#using filter to get all even number
+
+def is_even(number) :
+	return number % 2 == 0
+
+
+def return_even(number) :
+	if not isinstance(number, list) :
+		raise TypeError("Only list is allowed")
+	
+	for row in number :
+		if not isinstance(row, int) :
+			raise TypeError("Only integers is allowed")
+
+	if not number :
+		raise ValueError("List cannot be empty")
+
+	return list(filter(is_even, number))
+
+# Extract only the words longer than 5
+
+def is_longer(animals) :
+	return isinstance(animals, str) and animals != " " and len(animals) > 5
+
+def return_letter_longer_than_five(words) :
+	if not isinstance(words, list) :
+		raise TypeError("Only list is allowed")
+
+	if  any(not isinstance(word, str) or word == " " for word in words) :
+		raise ValueError("No integer allowed and no empty string")
+	if not words : 
+		raise TypeError("List cannot open")
+	
+	return list(filter(is_longer, words))
+
+#Keep the first value that is greater than 2
+
+
+def is_remove(my_list) :
+	if isinstance(my_list, list) :
+		raise TypeError("Only list is allowed")
+
+	return [value for value in my_list if isinstance(my_list, tuple) and len(my_list) > 0 and my_list[0] > 2]
+
+
+def filter_first_value_greater_than_2(new_list) :
+	if not isinstance(new_list, list) :
+		raise TypeError("Only accept list")
+
+	return list(filter(is_remove, new_list))
+
+
+def is_range(number) :
+	if (number) ==  0  :
+		raise ValueError
+	elif(number) == -1 :
+		raise ValueError
+	
+	for digit in range(1,16) :
+		if digit % 3 == 0 and digit % 5 == 0 :
+			return digit
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
