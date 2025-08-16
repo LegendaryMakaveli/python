@@ -32,19 +32,54 @@ class TestForTheSumOfInnerListFunction(TestCase) :
 	def test_for_the_confirm_functionality(makaveli) :
 		result = prove_of_concept_on_collection.sum_inner ([[1,2,3],[2,3,4]])
 		makaveli.assertNotEqual(result, [8, 9])
+
+
+
+class TestForTheFilterOfAllEvenNumberInARange(TestCase) :
+	def test_that_the_function_accpet_only_list(makaveli) :
+		result = prove_of_concept_on_collection.return_even ([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
+		makaveli.assertEqual(type(result), list)
+		makaveli.assertEqual(len(result), 11)
+
+
+
+class TestForTheFilterOfAllLetterLongerThan5InARange(TestCase) :
+	def test_that_the_function_accpet_only_list(makaveli) :
+		result = prove_of_concept_on_collection. return_letter_longer_than_five (["Cat", " Elephant", "Tiger", "Lion"])
+		makaveli.assertEqual(type(result), list)
+		makaveli.assertEqual(len(result), 1)
+
+	def test_the_function_accept_no_int(makaveli) :
+		with makaveli.assertRaises(ValueError) :
+			 prove_of_concept_on_collection.return_letter_longer_than_five([2, 3])
+
+
+class TestForTheFunctionThatFilterTheFirstValueGreaterThan2(TestCase) :
+	def test_the_function_only_accept_list(makaveli) :
+		result = prove_of_concept_on_collection.filter_first_value_greater_than_2 ([(1, 'A'), (4, 'B'), (2, 'C')])
+		makaveli.assertIsInstance(result, list)
+
+	def test_that_the_function_doesnt_accept_tuple(makaveli) :
+		with makaveli.assertRaises(TypeError) :
+			prove_of_concept_on_collection.filter_first_value_greater_than_2 (((1, 'A'), (4, 'B'), (2, 'C')))
+
+
+	def test_for_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.filter_first_value_greater_than_2 ([(1, 'A'), (4, 'B'), (2, 'C')])
+		makaveli.assertEqual(result, [(4, 'B')])
+
+
+class TestForNumberThatIsDivisibleBy3AndBy5(TestCase) :
+	def test_for_Zero_and_negative_input(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.is_range, 0)
 	
+	def test_for_negative_input(makaveli) :
+		makaveli.assertRaises(ValueError,  prove_of_concept_on_collection.is_range, -1)
 
-
-
-
-
-
-
-
-
-
-
-
+	def test_for_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.is_range ([1,2,3,4,5,6,7,8,15])
+		makaveli.assertEqual(result, 15)
+	
 
 
 
