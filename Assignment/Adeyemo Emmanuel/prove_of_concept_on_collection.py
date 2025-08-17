@@ -1,3 +1,5 @@
+from functools import reduce
+
 def append_number_to_tuple(numbers_tuple, number_to_add) :
 	if not isinstance(numbers_tuple,tuple) :
 		raise TypeError("Input must be a tuple")
@@ -130,19 +132,140 @@ def is_remove(my_list) :
 def filter_first_value_greater_than_2(new_list) :
 	if not isinstance(new_list, list) :
 		raise TypeError("Only accept list")
+	
+	if not new_list :
+		raise TypeError("list cannot be empty")
 
 	return list(filter(is_remove, new_list))
 
 
 def is_range(number) :
-	if (number) ==  0  :
-		raise ValueError
-	elif(number) == -1 :
-		raise ValueError
+	if (number) ==  0 or number == -1 :
+		raise ValueError	
+	return number % 3 == 0 and number % 5 == 0	
+
+def filter_numbers(number) :
+	if not isinstance(number, list) :
+		raise TypeError("Accept only list")
 	
-	for digit in range(1,16) :
-		if digit % 3 == 0 and digit % 5 == 0 :
-			return digit
+	if not number :
+		raise TypeError("Cannot be empty")
+
+	return list(filter(is_range, number))
+
+
+# Filter all palindromes
+
+def is_palindrome(word) :
+	if isinstance(word, int) :
+		raise ValueError("Integers is not allowed")
+	
+	if not word :
+		raise TypeError("Can't leave this open")
+
+	new_word = word.lower()
+	return new_word == new_word[: : -1]
+
+def check_for_palindrome(words) :
+	if not isinstance(words, list) :
+		raise TypeError("Only accept list")
+	
+	if not words :
+		raise TypeError("List cannot be empty")
+
+	for rows in words :
+		if isinstance(rows, int) :
+			raise ValueError("No integers allowed")
+
+	return list(filter(is_palindrome, words))
+
+
+def convert_to_upper(words) :
+	if not isinstance(words, list) :
+		raise TypeError("Only list is accepted")
+	
+	if not words :
+		raise TypeError("Cannot be empty")	
+
+	for rows in words :
+		if isinstance(rows, int) :
+			raise ValueError("No integers")
+		elif isinstance(rows, float) :
+			raise ValueError("No float too")
+
+	return list(map(str.upper, words))
+
+#Square all number in a list/range
+
+def square_number(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("Only list is accepted")
+
+	if not numbers :	
+		raise TypeError("cannot be empty")
+
+	for digit in numbers :
+		if isinstance(digit, str) :
+			raise ValueError("NO string allowed")
+		elif isinstance(digit, float) :
+			raise ValueError("No float too")
+
+	return list(map(lambda number: number ** 2, numbers))
+
+
+#Capitalizes the first letter
+
+def capitalize_first_letter(words) :
+	if not isinstance(words, list) :
+		raise TypeError("Must be a list")
+
+	if not words :	
+		raise TypeError("Cannot be empty")
+
+	for rows in words :
+		if isinstance(rows, int) :
+			raise ValueError("No integers pls")
+		elif isinstance(rows, float) :
+			raise ValueError("And no float too")
+
+	return list(map(str.capitalize, words))
+
+#Add 10% tax
+
+def add_tax(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("Must be a list")
+	
+	if not numbers :
+		raise TypeError("cannot be empty")
+	
+	for digit in numbers :
+		if isinstance(digit, str) :
+			raise ValueError("String is not welcome")
+
+	return list(map(lambda number: number * 1.1, numbers ))
+
+def sum_all_numbers(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("Must be a list")
+	
+	for digits in numbers :
+		if isinstance(digits, str) :
+			raise ValueError("No string allowed")
+		elif isinstance(digits, float) :
+			raise ValueError("No float too")
+
+	return reduce(lambda valueOne, valueTwo : valueOne + valueTwo, numbers)
+
+	
+
+
+
+
+
+
+
+
 
 
 
