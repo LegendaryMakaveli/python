@@ -179,12 +179,79 @@ class TestFunctionThatSumNumberInARangeWithReduceMethod(TestCase) :
 		result = prove_of_concept_on_collection.sum_all_numbers ([1,2,3,4,5]) 
 		makaveli.assertEqual(result, 15)
 
+	
+
+class TestFunctionThatFindTheLargestAndSmallestUsingReduce(TestCase) :
+	def test_that_the_function_only_accept_list(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.find_the_largest ([3,5,9,2,8]))
+
+	def test_that_the_function_only_accept_integers(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.find_the_largest, (["hello","world",45.6,909.444]))
+
+	def test_for_the_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.find_the_largest ([3,5,9,2,8])
+		makaveli.assertEqual(result, 9)
+		makaveli.assertNotEqual(result, 8)
+
+
+class TestFunctionThatConcetenateAllStringIntoSingleString(TestCase) :
+	def test_that_function_accept_list_alone(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.concatenate_string (["I", "love", "Python"]))
+
+	def test_that_the_function_dont_take_integers_and_float(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.concatenate_string, ([34.55, 355.9, 3, 5, 6]))
+
+	def test_that_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.concatenate_string (["I", "love", "python"])
+		makaveli.assertEqual(result, "I love python")
 
 
 
+class TestFunctionThatReturnTheSquaresOFNumber(TestCase) :
+	def test_that_the_function_only_accept_list(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.find_product ([1,2,3,4]))
+
+	def test_that_the_function_only_accept_integers(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.find_product, (["Hello", 34.56, 33.444, "world"]))
+
+	def test_the_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.find_product ([1,2,3,4,5])
+		makaveli.assertEqual(result, 3840)
+		makaveli.assertNotEqual(result, 2233)
+
+
+class TestTheFunctionThatSumAllElementInListAndUseFilterToKeepLargest(TestCase) :
+	def test_the_function_only_accept_list(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.sum_all_elements ([(1, 2), (3, 4), (5, 6)]))
+
+	def test_that_no_string_or_float_in_my_list(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.sum_all_elements, ([("hello", 73.45)]))
+
+	def test_for_the_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.sum_all_elements ([(1,2),(3,4),(5,6)])
+		makaveli.assertEqual(result, [3, 7, 11])
+		makaveli.assertNotEqual(result, [3,4,11])
+
+class TestForTheFilter(TestCase) :
+	def test_the_function_only_accept_list(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.is_greater ([3,4,5]))
+
+	def test_that_the_function_accept_only_integers(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.is_greater, (["hello", 88.99]))
 
 
 
+class TestForNonNumericString(TestCase) :
+	def test_the_function_only_accept_list(makaveli) :
+		makaveli.assertTrue(prove_of_concept_on_collection.remove_non_numeric (["123", "456", "789", "abc", "def"]))
+
+	def test_the_function_dont_accept_float(makaveli) :
+		makaveli.assertRaises(ValueError, prove_of_concept_on_collection.remove_non_numeric, ([89.88, 90.9]))
+
+	def test_the_function_functionality(makaveli) :
+		result = prove_of_concept_on_collection.remove_non_numeric (["123", "456", "789", "abc", "def"])
+		makaveli.assertEqual(result, 1368)
+		makaveli.assertNotEqual(result, 2223)
 
 
 
