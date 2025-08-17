@@ -72,17 +72,8 @@ def sum_inner(my_list) :
 	if type(my_list) == str :
 		raise ValueError("No string allowed")
 	
-	new_list = []
-
-	for rows in my_list :
-		count = 0
-		for column in rows:
-			count += column
-		new_list.append(count)
-	
-	return new_list
-
-
+	total = list(map(sum, my_list))
+	return total
 
 #using filter to get all even number
 
@@ -257,7 +248,107 @@ def sum_all_numbers(numbers) :
 
 	return reduce(lambda valueOne, valueTwo : valueOne + valueTwo, numbers)
 
+
+def find_the_largest(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("List is expected")
+
+	if not numbers :
+		raise TypeError("Cannot be empty")
+
+	for digits in numbers :
+		if isinstance(digits, str) :
+			raise ValueError("No string allowed")
+		elif isinstance(digits, float) :
+			raise ValueError("No float as well")
+
+	return reduce(lambda valueOne, valueTwo :  valueOne if valueOne > valueTwo else valueTwo, numbers)
+
+
+#concetenate string into single string
+
+def concatenate_string(words) :
+	if not isinstance(words, list) :
+		raise TypeError("list is expected")
+		
+	if not words :
+		raise TypeError("cannot be empty")
+
+	for rows in words :	
+		if isinstance(rows, int) :
+			raise ValueError("No integers allowed")
+		elif isinstance(rows, float) :
+			raise ValueError("No float as well")
+		
+		return reduce(lambda valueOne, valueTwo : valueOne + " " + valueTwo, words)
+
+
+#find the product
+
+def find_product(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("Only string is accepted")
 	
+	if not numbers :
+		raise TypeError("Cannot be empty")
+
+	for digits in numbers :
+		if isinstance(digits, str) :
+			raise ValueError("No string allowed")
+		elif isinstance(digits, float) :
+			raise ValueError("No float as well")
+
+	result = map(lambda digit : digit * 2, numbers)
+	return reduce(lambda valueOne, valueTwo : valueOne * valueTwo, result)
+
+
+#sum all element and use filter to keep the largest
+
+def sum_all_elements(numbers) :
+	if not isinstance(numbers, list) :
+		raise TypeError("Only list is allowed")
+
+	if not numbers :
+		raise TypeError("Cannot be empty")
+
+	for row in numbers  :
+		for column in row :
+			if isinstance(column, str) :
+				raise ValueError("No string allow")
+			elif isinstance(column, float) :
+				raise ValueError("And no float")
+
+	total = list(map(sum, numbers))
+	return total
+
+def is_greater(number) :
+	if not isinstance(number, list) :
+		raise TypeError("Only list")
+
+	if not number :
+		raise TypeError("Cannot be empty")
+
+	for rows in number :
+		if isinstance(rows, str) :
+			raise ValueError("No string")
+		elif isinstance(rows, float) :
+			raise ValueError("And no float")
+
+	return max(number)
+	
+
+def remove_non_numeric(number) :
+	if not isinstance(number, list) :
+		raise TypeError("Only list is allowed")
+
+	for row in number :
+		if isinstance(row, float) :
+			raise ValueError("No float")
+
+	number_only = [digit for digit in number if digit.isdigit()]
+	numbers = [int(digit) for digit in number_only]
+	return sum(numbers)
+
 
 
 
