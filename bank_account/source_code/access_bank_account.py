@@ -128,7 +128,28 @@ class AccessBank :
 
 
 
-    def withdraw_money(self, amount):
+
+    def sum_digits(self,number):
+        return sum(int(digit) for digit in str(number))
+
+    def validate_credit_card(self, card_number):
+        if card_number is None or len(card_number) == 0:
+            return False
+        if len(card_number) < 13 or len(card_number) > 16:
+            return False
+
+        result = 0
+
+        for position, digit in enumerate(reversed(card_number)):
+            if position % 2 == 1:
+                digit *= 2
+                digit = self.sum_digits(digit)
+            result += digit
+        return result % 10 == 0
+
+
+
+    def withdraw_money(self, amount, card_number):
         if isinstance(amount, str):
             raise ValueError("No string allowed")
         elif isinstance(amount, int):
@@ -138,10 +159,13 @@ class AccessBank :
         elif not amount:
             raise ValueError("Cannot be empty")
 
+        if not self.validate_credit_card(card_number):
+            raise ValueError("Invalid credit card")
+
         if self.balance >= amount :
             self.balance -= amount
         else:
             raise ValueError("Insufficient balance")
 
-        return self.balance
+        return float(self.balance)
 
