@@ -163,13 +163,29 @@ class TestTheFunctionThatWithDrawMoneyFromBalance(TestCase) :
         self.my_bank = AccessBank("Makaveli", "Abc123!@#", "08034322112", 23)
 
     def test_that_the_function_dont_accept_invalid_input(self):
-        self.assertRaises(ValueError, self.my_bank.withdraw_money, "Maka")
-        self.assertRaises(ValueError, self.my_bank.withdraw_money, 98)
-        self.assertRaises(ValueError, self.my_bank.withdraw_money, -1)
-        self.assertRaises(ValueError, self.my_bank.withdraw_money, 0)
-        self.assertRaises(ValueError, self.my_bank.withdraw_money, '')
+        card = [4, 5, 3, 9, 1, 4, 8, 8, 0, 3, 4, 3, 6, 4, 6, 7]
+        self.assertRaises(ValueError, self.my_bank.withdraw_money, "Maka", card)
+        self.assertRaises(ValueError, self.my_bank.withdraw_money, 98, card)
+        self.assertRaises(ValueError, self.my_bank.withdraw_money, -1, card)
+        self.assertRaises(ValueError, self.my_bank.withdraw_money, 0, card)
+        self.assertRaises(ValueError, self.my_bank.withdraw_money, '', card)
 
         self.my_bank.deposit(5000.00)
-        self.my_bank.withdraw_money(2000.00)
+        self.my_bank.withdraw_money(2000.00, card)
         self.assertEqual(self.my_bank.get_balance(), 3000)
+
+    def test_sum_digits(self):
+        self.assertEqual(self.my_bank.sum_digits(12), 3)
+        self.assertEqual(self.my_bank.sum_digits(99), 18)
+        self.assertEqual(self.my_bank.sum_digits(5), 5)
+
+    def test_validate_credit_card(self):
+        valid_card = [4, 5, 3, 9, 1, 4, 8, 8, 0, 3, 4, 3, 6, 4, 6, 7]
+        invalid_card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6]
+
+        self.assertTrue(self.my_bank.validate_credit_card(valid_card))
+        self.assertFalse(self.my_bank.validate_credit_card(invalid_card))
+        self.assertFalse(self.my_bank.validate_credit_card([]))
+        self.assertFalse(self.my_bank.validate_credit_card([4, 5, 3]))
+
 
