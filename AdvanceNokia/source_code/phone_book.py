@@ -1,6 +1,6 @@
 class PhoneBook:
-    def search(self):
-        return "Search"
+    def __init__(self):
+        self.contact = []
 
-    def service_nos(self):
-        return "Service Nos"
+    def add_contact(self, name, contact):
+        self.contact.append({"name": name, "contact": contact})
