@@ -13,7 +13,7 @@ class AccessBank :
         if isinstance(name, int) :
             raise ValueError("Name cannot have number in_between")
         elif isinstance(name, float) :
-            raise ValueError("Name cannot have number in_between")
+            raise ValueError("Point numbers can't be in_between")
         elif not name.strip() :
             raise ValueError("Name cannot be empty")
         self.name = name.strip().upper()
@@ -83,11 +83,6 @@ class AccessBank :
 
     def get_address(self):
         return self.address
-
-
-
-
-
 
     def set_phone(self, new_phone):
         if isinstance(new_phone, int) :
