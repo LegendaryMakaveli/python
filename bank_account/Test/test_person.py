@@ -1,7 +1,7 @@
 from unittest import TestCase
 from person import Person
 
-class TestPerson(TestCase):
+class TestBankAccountRegistration(TestCase):
 
     def test_valid_person_creation(self):
         self.person = Person(
