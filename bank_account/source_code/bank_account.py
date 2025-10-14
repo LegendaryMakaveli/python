@@ -1,7 +1,7 @@
 from decimal import Decimal
 from random import randrange
 
-from person import Person
+from .person import Person
 
 
 class Bank(Person):
