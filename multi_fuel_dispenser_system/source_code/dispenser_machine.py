@@ -1,15 +1,18 @@
 from fuel import Fuel
 class DispenserMachine:
-    def __init__(self, fuels):
+    def __init__(self):
         self.fuels = {}
 
     def get_available_fuel(self):
-        return {
-            name: {
-                "quantity": fuel.available_quantity,
-                "price": fuel.price_per_unit
-            } for name, fuel in self.fuels.items()
-        }
+        for name, fuel in self.fuels.items():
+            return {
+                name: {
+                    "quantity": fuel.available_quantity,
+                    "price": fuel.price_per_unit
+                 }
+            }
+
+        return None
 
     def dispense_fuel(self, fuel_name, quantity):
         if fuel_name not in self.fuels:
