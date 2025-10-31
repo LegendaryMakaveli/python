@@ -13,7 +13,7 @@ class TestFuelAttendant(TestCase):
         self.attendant.name = "John"
         self.assertEqual(self.attendant.name, "John")
 
-    def test_name_setter_non_string(self):
+    def test_name_non_string(self):
         with self.assertRaises(ValueError):
             self.attendant.name = 12345
 

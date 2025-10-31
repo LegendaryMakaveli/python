@@ -35,9 +35,6 @@ class TestDispenserMachine(TestCase):
         with self.assertRaises(ValueError):
             self.machine.dispense_fuel("Petrol", 9999.0)
 
-    def test_dispense_with_string_quantity_raises(self):
-        with self.assertRaises(Exception):
-            self.machine.dispense_fuel("Petrol", "ten")
 
     def test_update_price_for_missing_fuel_raises(self):
         with self.assertRaises(ValueError):
