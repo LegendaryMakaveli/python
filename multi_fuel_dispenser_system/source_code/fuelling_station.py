@@ -1,10 +1,9 @@
-from fuel import Fuel
 from dispenser_machine import DispenserMachine
 from fuel_attendant import FuelAttendant
 
 
 def main():
-    print("⛽ Fuel Dispenser System\n")
+    print("Fuel Dispenser System\n")
     machine = DispenserMachine({})
     attendant = FuelAttendant("Mary")
 
